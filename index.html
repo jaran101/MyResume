@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Student-focused IT Support and Technical Support resume template in HTML and CSS" />
+  <title>Student IT Resume</title>
+  <style>
+    /* Root colors and typography */
+    :root {
+      --primary: #1f4e79;
+      --primary-dark: #163b5b;
+      --accent: #4f81bd;
+      --text: #23313f;
+      --muted: #6b7280;
+      --border: #d9e2ec;
+      --bg: #f7f9fc;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1100px;
+      margin: 24px auto;
+      background: var(--white);
+      box-shadow: 0 16px 40px rgba(22, 59, 91, 0.12);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 34px 40px 28px;
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: var(--white);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent 35%);
+      pointer-events: none;
+    }
+
+    .profile {
+      flex: 1.3;
+    }
+
+    .profile h1 {
+      margin: 0 0 8px;
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .job-title {
+      margin: 0 0 12px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: #dce8f5;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .summary {
+      margin: 0;
+      max-width: 650px;
+      color: #eef4fb;
+      font-size: 0.98rem;
+    }
+
+    .contact-card {
+      flex: 0 0 auto;
+      width: auto;
+      max-width: 340px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 14px 16px;
+      border-radius: 12px;
+      backdrop-filter: blur(2px);
+      align-self: flex-start;
+    }
+
+    .contact-card h2 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .contact-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .contact-card li {
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 6px;
+      word-break: normal;
+      white-space: normal;
+    }
+
+    .contact-card li strong {
+      display: inline-block;
+      flex: 0 0 auto;
+      min-width: 0;
+      margin-right: 6px;
+      width: auto;
+    }
+
+    .contact-card a {
+      color: var(--white);
+      text-decoration: none;
+      display: inline;
+      flex: 1 1 0;
+      max-width: 100%;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    .contact-card a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      padding: 28px 40px 36px;
+    }
+
+    .main-column,
+    .side-column {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .section-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      background: var(--white);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.03);
+    }
+
+    .section-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.02rem;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .section-card p,
+    .section-card li {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .section-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .section-card li {
+      margin-bottom: 6px;
+    }
+
+    .skill-groups {
+      display: grid;
+      gap: 12px;
+    }
+
+    .skill-group {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: linear-gradient(180deg, #fbfcfe, #f5f9fd);
+    }
+
+    .skill-group h3 {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      color: var(--primary);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .skill-list li {
+      background: #eef4fb;
+      color: var(--primary-dark);
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      margin: 0;
+      border: 1px solid #dce9f6;
+    }
+
+    .experience-item,
+    .project-item {
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .experience-item:last-child,
+    .project-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .item-title {
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .item-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .pill-list li {
+      background: #f3f7fb;
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin: 0;
+      color: var(--primary-dark);
+    }
+
+    footer {
+      padding: 0 40px 24px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      border-top: 1px solid #eef2f6;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 860px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        flex-direction: column;
+      }
+
+      .contact-card {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media print {
+      body {
+        background: var(--white);
+      }
+
+      .page {
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        max-width: none;
+        width: 100%;
+      }
+
+      .hero {
+        padding: 24px 28px 18px;
+      }
+
+      .content {
+        padding: 20px 28px 24px;
+        gap: 16px;
+      }
+
+      .section-card {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header class="hero" aria-label="Profile and contact information">
+      <div class="profile">
+        <h1>JARANCHAI TONJAMPA</h1>
+        <p class="job-title">Computer Engineering Student • Seeking IT Support / IT Helpdesk Opportunities</p>
+        <p class="summary">
+          Computer Engineering student with practical experience in Windows and Linux administration,
+          hardware troubleshooting, networking fundamentals, and web application development.
+          Interested in technical support, problem solving, and delivering reliable user support in fast-paced environments.
+        </p>
+      </div>
+
+      <aside class="contact-card" aria-label="Contact details">
+        <h2>Contact</h2>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:jaranchai.to@rmuti.ac.th">jaranchai.to@rmuti.ac.th</a></li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/jaran101" target="_blank"
+              rel="noopener">https://github.com/jaran101</a></li>
+          <li><strong>Location:</strong> khonkaen, Thailand</li>
+        </ul>
+      </aside>
+    </header>
+
+    <main class="content">
+      <div class="main-column">
+        <section class="section-card" aria-labelledby="experience-heading">
+          <h2 id="experience-heading">Relevant Experience</h2>
+
+          <article class="experience-item">
+            <div class="item-header">
+              <div>
+                <div class="item-title">Computer Engineering Laboratory</div>
+              </div>
+              <div class="item-meta">2024 - Present</div>
+            </div>
+            <ul>
+              <li>Installed Windows and Ubuntu operating systems</li>
+              <li>Configured networking and basic system setups</li>
+              <li>Troubleshot hardware issues and supported system maintenance</li>
+              <li>Built REST APIs and supported backend development tasks</li>
+              <li>Used Docker for application deployment and testing</li>
+            </ul>
+            <ul>
+              <li>Completed multiple backend-focused projects</li>
+              <li>Successfully deployed applications using Docker</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="section-card" aria-labelledby="education-heading">
+          <h2 id="education-heading">Education</h2>
+          <p><strong>Bachelor of Engineering in Computer Engineering</strong></p>
+          <p>Rajamangala University of Technology</p>
+        </section>
+
+        <section class="section-card" aria-labelledby="coursework-heading">
+          <h2 id="coursework-heading">Relevant Coursework</h2>
+          <ul>
+            <li>Computer Networks</li>
+            <li>Operating Systems</li>
+            <li>Computer Architecture</li>
+            <li>Software Engineering</li>
+            <li>Web Programming</li>
+            <li>Database System</li>
+          </ul>
+        </section>
+
+        <section class="section-card" aria-labelledby="projects-heading">
+          <h2 id="projects-heading">Projects</h2>
+
+          <article class="project-item">
+            <div class="item-title">Service Booking Website</div>
+            <p><strong>Description:</strong> Developed a full-stack service booking platform with authentication, role-based access, and RESTful APIs.</p>
+            <p><strong>Technologies:</strong> Node.js, Express, MySQL, Prisma, Docker</p>
+            <p><strong>Responsibilities:</strong> Designed the database, built REST APIs, implemented authentication, and deployed the application with Docker.</p>
+          </article>
+        </section>
+
+        <section class="section-card" aria-labelledby="certifications-heading">
+          <h2 id="certifications-heading">Certifications</h2>
+          <ul>
+            <li>AI Game Development Fundamentals (Feb 2026)</li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="side-column">
+        <section class="section-card" aria-labelledby="skills-heading">
+          <h2 id="skills-heading">Technical Skills</h2>
+          <div class="skill-groups">
+            <div class="skill-group">
+              <h3>Operating Systems</h3>
+              <ul class="skill-list">
+                <li>Windows</li>
+                <li>Linux</li>
+                <li>Ubuntu</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3>Networking</h3>
+              <ul class="skill-list">
+                <li>TCP/IP</li>
+                <li>DNS</li>
+                <li>DHCP</li>
+                <li>Subnet</li>
+                <li>VPN</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3>Hardware</h3>
+              <ul class="skill-list">
+                <li>Troubleshooting</li>
+                <li>Laptop</li>
+                <li>Desktop</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3>Software</h3>
+              <ul class="skill-list">
+                <li>Microsoft Office</li>
+                <li>Google Workspace</li>
+                <li>AnyDesk</li>
+                <li>TeamViewer</li>
+                <li>Remote Desktop</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3>Web & Programming</h3>
+              <ul class="skill-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Node.js</li>
+                <li>Express.js</li>
+                <li>REST API</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3>Database</h3>
+              <ul class="skill-list">
+                <li>MySQL</li>
+                <li>Prisma ORM</li>
+                <li>MongoDB</li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3>DevOps</h3>
+              <ul class="skill-list">
+                <li>Docker</li>
+                <li>Docker Compose</li>
+                <li>Ubuntu Server</li>
+                <li>SSH</li>
+                <li>Nginx (Basic)</li>
+                <li>Git</li>
+                <li>GitHub</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card" aria-labelledby="soft-skills-heading">
+          <h2 id="soft-skills-heading">Soft Skills</h2>
+          <ul class="pill-list">
+            <li>Communication</li>
+            <li>Problem Solving</li>
+            <li>Customer Service</li>
+            <li>Time Management</li>
+            <li>Teamwork</li>
+          </ul>
+        </section>
+
+      </div>
+    </main>
+
+    <footer>
+      <p>Prepared for internships, student projects, and entry-level IT Support opportunities</p>
+    </footer>
+  </div>
+</body>
+
+</html>
